@@ -14,23 +14,27 @@ Crop the image test-input.jpg 50 px from right and write the output to test-outp
 
     imago-crop -i test-input.jpg -o test-output.png -outformat png -right 50
 
+Crop the image test-input.jpg 20% from top, 10% from bottom, and write the output to test-output.png
 
-Build
-=====
+    imago-crop -i test-input.jpg -o test-output.png -outformat png -top 20% -bottom 10%
+
+Crop the image test-input.jpg 25% px from left, ensuring at least 300px width,
+and write the output to test-output.jpg
+
+    imago-crop -i test-input.jpg -o test-output.jpg -left 25% -minwidth 300
+
+
+Install
+=======
 
 You would want to do
 
-    go build imago-crop.go
+    go get github.com/dotmanish/imago/imago-crop
 
-to create the 'imago-crop' or 'imago-crop.exe' binary (depending upon your target platform). If you don't compile and build a binary beforehand, you can replace
+to download and install the *imago-crop* binary.
+This requires you to have configured GOPATH variable correctly in your
+environment.
 
-    imago-crop
-
-with
-
-    go run imago-crop.go
-
-in the above usage examples.
 
 License
 =======
