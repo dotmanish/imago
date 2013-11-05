@@ -24,15 +24,15 @@ import (
 	"bufio"
 	"flag"
 	"fmt"
+	"image"
 	"image/draw"
-	_ "image/png"
 	_ "image/gif"
 	"image/jpeg"
-	"image"
+	_ "image/png"
 	"io"
 	"os"
-	"strings"
 	"strconv"
+	"strings"
 )
 
 var _imago_infilename, _imago_outfilename string
@@ -164,7 +164,7 @@ func crop(r io.Reader, w io.Writer, left_offset_pixels, top_offset_pixels, right
 	b := img.Bounds()
 
 	// Check if we are within the min-width, if specified by the user
-	if b.Max.X - left_offset_pixels - right_offset_pixels < min_width_pixels {
+	if b.Max.X-left_offset_pixels-right_offset_pixels < min_width_pixels {
 		diff_pixels := min_width_pixels - (b.Max.X - left_offset_pixels - right_offset_pixels)
 		left_offset_pixels = left_offset_pixels - (diff_pixels / 2)
 		right_offset_pixels = right_offset_pixels - (diff_pixels / 2)
@@ -223,16 +223,16 @@ func main() {
 
 	b := img.Bounds()
 	if _imago_left_offset_px == 0 && _imago_left_offset_perc != 0.0 {
-			_imago_left_offset_px = (int) ((float64(b.Max.X) * _imago_left_offset_perc) / 100.0)
+		_imago_left_offset_px = (int)((float64(b.Max.X) * _imago_left_offset_perc) / 100.0)
 	}
 	if _imago_top_offset_px == 0 && _imago_top_offset_perc != 0.0 {
-			_imago_top_offset_px = (int) ((float64(b.Max.Y) * _imago_top_offset_perc) / 100.0)
+		_imago_top_offset_px = (int)((float64(b.Max.Y) * _imago_top_offset_perc) / 100.0)
 	}
 	if _imago_bottom_offset_px == 0 && _imago_bottom_offset_perc != 0.0 {
-			_imago_bottom_offset_px = (int) ((float64(b.Max.Y) * _imago_bottom_offset_perc) / 100.0)
+		_imago_bottom_offset_px = (int)((float64(b.Max.Y) * _imago_bottom_offset_perc) / 100.0)
 	}
 	if _imago_right_offset_px == 0 && _imago_right_offset_perc != 0.0 {
-			_imago_right_offset_px = (int) ((float64(b.Max.X) * _imago_right_offset_perc) / 100.0)
+		_imago_right_offset_px = (int)((float64(b.Max.X) * _imago_right_offset_perc) / 100.0)
 	}
 
 	fi, errfi := os.Open(_imago_infilename)
